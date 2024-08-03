@@ -22,6 +22,7 @@ app.use(
       process.env.FRONTEND_URL,
       process.env.DASHBOARD_URL,
       "http://localhost:5173",
+      "https://hospital-dashboard-rose.vercel.app",
     ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
