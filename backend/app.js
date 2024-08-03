@@ -11,21 +11,23 @@ import { dbConnection } from "./database/dbConnection.js";
 import messageRouter from "./router/messageRouter.js";
 import appointmentRouter from "./router/appointmentRouter.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
-import userRouter from './router/userRouter.js';
+import userRouter from "./router/userRouter.js";
 
 const app = express();
 config({ path: "./config/config.env" });
 
-// app.use(
-//   cors({
-//     origin: [process.env.FRONTEND_URL, process.env.DASHBOARD_URL],
-//     methods: ["GET", "POST", "PUT", "DELETE"],
-//     credentials: true,
-//   })
-// );
 app.use(
-  cors()
+  cors({
+    origin: [
+      process.env.FRONTEND_URL,
+      process.env.DASHBOARD_URL,
+      "http://localhost:5173",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
 );
+
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
